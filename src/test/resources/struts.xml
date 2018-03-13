@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+  
+    <constant name="struts.custom.i18n.resources" value="errors"></constant>
+    <!--
+    struts.objectFactory = spring    :将Struts创建对象工厂改为Spring
+    struts.objectFactory.spring.autoWire = name    spring自动装配Struts的依赖属性(默认开启)
+      -->
+    <constant name="struts.objectFactory" value="spring"></constant>
+    
+    <!-- 第一个package命名空间 -->
+    <package name="user" namespace="/" extends="json-default">
+		
+	<!-- class是spring扫描出来的名字 -->
+      <action name="user_*" class="userAction" method="{1}">
+          <result name="add">/index.jsp</result>          
+          <result name="delete">/index.jsp</result>          
+          <result name="update">/index.jsp</result>          
+          <result name="find">/index.jsp</result>          
+          <result name="success" type="json">
+          	<param name="root">response</param>
+          </result>          
+      </action>
+      
+    </package>
+</struts>

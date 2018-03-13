@@ -13,7 +13,7 @@
     <constant name="struts.objectFactory" value="spring"></constant>
     
     <!-- 第一个package命名空间 -->
-    <package name="user" namespace="/" extends="struts-default">
+    <package name="user" namespace="/" extends="json-default">
 		
 	<!-- class是spring扫描出来的名字 -->
       <action name="user_*" class="userAction" method="{1}">
@@ -21,6 +21,9 @@
           <result name="delete">/index.jsp</result>          
           <result name="update">/index.jsp</result>          
           <result name="find">/index.jsp</result>          
+          <result name="success" type="json">
+          	<param name="root">response</param>
+          </result>          
       </action>
       
     </package>

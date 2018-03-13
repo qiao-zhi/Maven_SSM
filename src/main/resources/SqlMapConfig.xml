@@ -3,14 +3,15 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 
+	<!-- 开启二级缓存 -->
+    <settings>
+    	<setting name="cacheEnabled" value="true"/>
+    </settings>
+    
+    
     <!--  只需要定义个别名,这个应该有-->
  	<typeAliases >
- 	    <package name="cn.xm.bean"/>
+ 	    <package name="cn.qlq.bean"/>
  	</typeAliases>   	
-	<!-- 动态代理也不需要配置这个扫描，留着也行 -->
-	<mappers>
-	    <!-- 原始DAO开发使用这个手动加载xml -->
-	    <package name="cn.xm.mapper"/> 
-	</mappers>
-    
+
 </configuration>

@@ -3,14 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 
-注意：使用mapper代理方法开发，namespace有特殊重要的作用
--->
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 注意：使用mapper代理方法开发，namespace有特殊重要的作用 -->
 <mapper namespace="cn.qlq.mapper.UserMapper">
+	<!-- 使用Redis二级缓存 -->
+	<cache type="cn.qlq.jedis.RedisCache"></cache>
 
-    <select id="findUserById"  parameterType="int" resultType="cn.qlq.bean.User">
-    	select * from user where id = #{id}
-    </select>
+	<select id="findUserById" parameterType="int" resultType="cn.qlq.bean.User">
+		select
+		* from user where id = #{id}
+	</select>
 
-	
+	<select id="findUsersByPage" resultType="cn.qlq.bean.User">
+		select * from user
+	</select>
+
+	<insert id="addUser">
+		insert into user values(#{0},#{1})
+	</insert>
+
+
 </mapper>

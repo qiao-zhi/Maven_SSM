@@ -7,7 +7,7 @@ xmlns:tx="http://www.springframework.org/schema/tx"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
 
 	<!-- 0.连接池属性设置读取指定的properties文件 -->
-	<context:property-placeholder location="classpath:db.properties" />	
+	<context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>	
 
 	<!-- 1.将连接池放入spring容器 -->
 	<bean name="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
@@ -25,6 +25,20 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 		<property name="dataSource" ref="dataSource" />
 		<!-- 配置Mybatis的核心 配置文件所在位置 -->
 		<property name="configLocation" value="classpath:sqlMapConfig.xml" />
+		        <!-- 注意其他配置 -->
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageInterceptor">
+                    <property name="properties">
+                        <!--使用下面的方式配置参数，一行配置一个 -->
+                        <value>
+                           	 helperDialect=mysql
+                             reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
 	</bean>
 	
 	

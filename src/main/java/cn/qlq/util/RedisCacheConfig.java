@@ -12,6 +12,11 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 @EnableCaching
 @Configuration
+/**
+ * 注解redis缓存需要使用的配置类  java配置的方式注入bean到spring
+ * @author liqiang
+ *
+ */
 public class RedisCacheConfig extends CachingConfigurerSupport {
     private volatile JedisConnectionFactory jedisConnectionFactory;
     private volatile RedisTemplate<String, String> redisTemplate;

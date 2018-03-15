@@ -13,7 +13,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 @EnableCaching
 @Configuration
 /**
- * 注解redis缓存需要使用的配置类  java配置的方式注入bean到spring
+ * 注解redis缓存集成spring需要使用的配置类  java配置的方式注入bean到spring
  * @author liqiang
  *
  */

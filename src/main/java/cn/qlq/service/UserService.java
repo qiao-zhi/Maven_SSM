@@ -23,14 +23,24 @@ public interface UserService {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<User> findUsersByPage() throws SQLException;
-	
+	public List<User> findUsersByPage(String name) throws SQLException;
+
 	/**
 	 * 插入User
+	 * 
 	 * @param id
 	 * @param name
 	 * @return
 	 * @throws SQLException
 	 */
-	public int addUser(int id,String name)throws SQLException;
+	public int addUser(int id, String name) throws SQLException;
+
+	/**
+	 * 根据编号删除缓存
+	 * 
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
+	public boolean deleteById(int id) throws SQLException;
 }

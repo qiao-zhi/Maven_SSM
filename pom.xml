@@ -14,7 +14,7 @@
 
 		<struts.version>2.3.24.1</struts.version>
 		<struts.javassist.version>3.12.1.GA</struts.javassist.version>
-		<spring.version>3.0.5.RELEASE</spring.version>
+		<spring.version>4.2.4.RELEASE</spring.version>
 		<mybatis.version>3.2.2</mybatis.version>
 		<mybatis.spring.version>1.2.1</mybatis.spring.version>
 		<mysql.version>5.1.37</mysql.version>
@@ -56,11 +56,8 @@
 			<artifactId>spring-test</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.springframework</groupId> <artifactId>spring-tx</artifactId> 
+			<version>${spring.version}</version> </dependency> -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
@@ -194,12 +191,12 @@
 		<dependency>
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
-			<version>2.7.1</version>
+			<version>2.9.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-redis</artifactId>
-			<version>1.6.2.RELEASE</version>
+			<version>1.8.7.RELEASE</version>
 		</dependency>
 		<!-- jackson -->
 		<dependency>

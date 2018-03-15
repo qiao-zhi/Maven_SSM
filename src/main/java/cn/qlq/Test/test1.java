@@ -1,18 +1,23 @@
-/*package JunitTest;
+package cn.qlq.Test;
+
 
 import org.junit.Test;
-
-import cn.xm.bean.User;
-import cn.xm.service.UserService;
-import cn.xm.service.impl.UserServiceImpl;
+import redis.clients.jedis.Jedis;
 
 public class test1 {
 
-	@Test
-	public void fun1(){
-		UserService us = new UserServiceImpl();
-		User u = us.findUserById(5);
-		System.out.print(u);
-	}
+	private static final String host = "qiaoliqiang.cn";  
+    
+    private static final int post = 7000;  
+      
+      
+    public static void main(String[] args) {  
+          
+        Jedis jedis = new Jedis(host, post);  
+        System.out.println(jedis.ping());  
+        for(int i=10919;i<10920;i++) {  
+            System.out.println(jedis.clusterAddSlots(i));  
+        }  
+        System.out.println("结束");  
+    } 
 }
-*/

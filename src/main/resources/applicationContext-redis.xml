@@ -45,6 +45,19 @@
     </bean >   
 
 
+  	<!-- 配置RedisCacheManager -->
+    <bean id="redisCacheManager" class="org.springframework.data.redis.cache.RedisCacheManager">
+        <constructor-arg name="redisOperations" ref="redisTemplate" />
+        <property name="defaultExpiration" value="${redis.expiration}" />
+    </bean>
+
+    <!-- 配置RedisCacheConfig -->
+    <bean id="redisCacheConfig" class="cn.qlq.util.RedisCacheConfig">
+        <constructor-arg ref="jedisConnectionFactory"/>
+        <constructor-arg ref="redisTemplate"/>
+        <constructor-arg ref="redisCacheManager"/>
+    </bean>
+
 	<!-- 下面这个是整合Mybatis的二级缓存使用的 -->
 	<bean id="redisCacheTransfer" class="cn.qlq.jedis.RedisCacheTransfer">
 		<property name="jedisConnectionFactory" ref="jedisConnectionFactory" />

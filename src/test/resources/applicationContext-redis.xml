@@ -45,6 +45,8 @@
     </bean >   
 
 
+
+
 	<!-- 下面这个是整合Mybatis的二级缓存使用的 -->
 	<bean id="redisCacheTransfer" class="cn.qlq.jedis.RedisCacheTransfer">
 		<property name="jedisConnectionFactory" ref="jedisConnectionFactory" />

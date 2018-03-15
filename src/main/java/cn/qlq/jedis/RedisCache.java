@@ -39,7 +39,7 @@ public class RedisCache implements Cache {
         rwl.readLock().lock();
         JedisConnection connection = null;
         try {
-            connection = jedisConnectionFactory.getConnection();
+            connection = (JedisConnection) jedisConnectionFactory.getConnection();
             connection.flushDb();
             connection.flushAll();
             logger.debug("清除缓存.......");
@@ -64,7 +64,7 @@ public class RedisCache implements Cache {
         int result = 0;
         JedisConnection connection = null;
         try {
-            connection = jedisConnectionFactory.getConnection();
+            connection = (JedisConnection) jedisConnectionFactory.getConnection();
             result = Integer.valueOf(connection.dbSize().toString());
             logger.info("添加mybaits二级缓存数量：" + result);
         } catch (JedisConnectionException e) {
@@ -82,7 +82,7 @@ public class RedisCache implements Cache {
 
         JedisConnection connection = null;
         try {
-            connection = jedisConnectionFactory.getConnection();
+            connection = (JedisConnection) jedisConnectionFactory.getConnection();
             RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
             connection.set(SerializeUtil.serialize(key), SerializeUtil.serialize(value));
             logger.info("添加mybaits二级缓存key=" + key + ",value=" + value);
@@ -102,7 +102,7 @@ public class RedisCache implements Cache {
         Object result = null;
         JedisConnection connection = null;
         try {
-            connection = jedisConnectionFactory.getConnection();
+            connection = (JedisConnection) jedisConnectionFactory.getConnection();
             RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
             result = serializer.deserialize(connection.get(serializer.serialize(key)));
             logger.info("命中mybaits二级缓存,value=" + result);
@@ -124,7 +124,7 @@ public class RedisCache implements Cache {
         JedisConnection connection = null;
         Object result = null;
         try {
-            connection = jedisConnectionFactory.getConnection();
+            connection = (JedisConnection) jedisConnectionFactory.getConnection();
             RedisSerializer<Object> serializer = new JdkSerializationRedisSerializer();
             result = connection.expire(serializer.serialize(key), 0);
         } catch (JedisConnectionException e) {
